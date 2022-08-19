@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://Emmy-github-webdev.github.io/monster-rolodex")
+[Live Demo Link](https://emmy-github-webdev.github.io/monster-rolodex/)
 
 ## Getting Started
 
