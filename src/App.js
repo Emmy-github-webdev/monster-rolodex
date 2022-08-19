@@ -5,14 +5,25 @@ class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      string: "Hello Emmanuel!"
+      monsters: []
     };
+  }
+  componentDidMount(){
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json()
+    .then(user => this.setState({monsters: user}))
+    )
+    
   }
   render() {
     return (
       <div>
-        <p>{this.state.string}</p>
-        <button onClick={() => this.setState({string: "Welcome Ogah Emmanuel."})}>Click Me</button>
+        {this.state.monsters.map((monster, id) => {
+          return (
+            <p key={id}>{monster.name}</p>
+          )
+        })}
+        
       </div>
     )
   }
