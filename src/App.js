@@ -10,6 +10,8 @@ class App extends React.Component {
       monsters: [],
       searchField: ''
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount(){
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -17,17 +19,20 @@ class App extends React.Component {
     .then(user => this.setState({monsters: user}))
     )
     
+  };
+
+  handleChange = e => {
+    this.setState({searchField: e.target.value})
   }
   render() {
     const {monsters, searchField} = this.state;
     const filteredMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(searchField.toLocaleLowerCase()))
     return (
       <div className='App'>
+        <h1>Monsters Garden</h1>
         <SearchBox  
           placeholder='Search monster'
-          handleChange={
-            e => this.setState({searchField: e.target.value})
-          }
+          handleChange={this.handleChange}
         />
         <Cardlist monsters={filteredMonsters}/>
       </div>
